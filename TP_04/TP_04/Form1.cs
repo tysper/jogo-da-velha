@@ -60,7 +60,7 @@ namespace TP_04
                 { 2, 5, 8 }, { 6, 7, 8 }, { 0, 4, 8 }, {-1, -1, -1}
             }
         };
-  
+        int[] posicoes_usadas_pc = new int[9] { -1, -1, -1, -1, -1, -1, -1, -1, -1 };
 
         //Messagem para o usuário
         String msg, titulo;
@@ -110,6 +110,21 @@ namespace TP_04
             return (x % max);
         }
 
+        /*int posicao_score(int[] posicoes)
+        {
+            int[,] score = new int[9, 4] { { 0, 0, 0, 0 }, { 0, 0, 0, 0 }, { 0, 0, 0, 0 }, { 0, 0, 0, 0 }, { 0, 0, 0, 0 }, { 0, 0, 0, 0 }, { 0, 0, 0, 0 }, { 0, 0, 0, 0 }, { 0, 0, 0, 0 } };
+            for(int x = 0; x < 9; x++)
+            {
+                for(int y = 0; y < 4; y++)
+                {
+                    for(int z = 0; z < 3; z++)
+                    {
+                        if (posicoes[x,y,z] == )
+                    }
+                }
+            }
+        }*/
+
         #endregion 
 
         public FRM_Main()
@@ -126,8 +141,15 @@ namespace TP_04
 
         private void TXT_Nome_TextChanged(object sender, EventArgs e)
         {
-            GRP_Partida.Text = "Partida " + numero_partida + " - " + TXT_Nome.Text;
-            GRP_Placar.Text = "Placar de " + TXT_Nome.Text;
+            try
+            {
+                GRP_Partida.Text = "Partida " + numero_partida + " - " + TXT_Nome.Text;
+                GRP_Placar.Text = "Placar de " + TXT_Nome.Text;
+            } 
+            catch
+            {
+                throw new Exception("Erro no textbox");
+            }
         }
 
         #region Lixo
@@ -199,7 +221,7 @@ namespace TP_04
 
         private void BTN_Reiniciar_Click(object sender, EventArgs e)
         {
-            LBL_Venceu.Text = Convert.ToString(numero_aleatorio(0, 8));
+
         }
 
         private void label1_Click(object sender, EventArgs e)
